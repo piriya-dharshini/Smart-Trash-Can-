@@ -1,0 +1,24 @@
+#include <Servo.h>
+
+Servo servo;
+int servoPin = 9;
+
+void setup() {
+    servo.attach(servoPin);
+    Serial.begin(115200);
+}
+
+void loop() {
+    if (Serial.available()) {
+        int prediction = Serial.parseInt();
+          if (prediction == 1) {
+                        servo.write(90);
+                        delay(2000);     // Delay to keep the lid open
+                        servo.write(0);
+        } 
+          else if (prediction == 0) {
+                servo.write(0);  // Open the lid of the garbage bin
+                  // Close the lid of the garbage bin
+    }
+  }
+}
